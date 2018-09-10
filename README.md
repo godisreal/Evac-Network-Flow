@@ -9,3 +9,5 @@ Highlights: The traditional network-flow model does not consider human intellige
 
 ![](https://github.com/godisreal/Evac-Network-Flow/blob/master/wayfinding.png)
 
+For our previous research work, please visit the following website for details. 
+https://www.engr.uconn.edu/msl/test_data/evacuation.html
