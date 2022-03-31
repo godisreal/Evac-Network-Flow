@@ -23,7 +23,7 @@ def readCSV(fileName):
     csvFile.close()	
 
     [I, J] = np.shape(dataTemp)
-    print "The size of tha above matrix:", [I, J]
+    print("The size of tha above matrix:", [I, J])
 
     matrix = np.zeros((I, J))
 
@@ -31,7 +31,7 @@ def readCSV(fileName):
         for j in range(1,J):
             matrix[i,j]=float(dataTemp[i,j])
 
-    print matrix[1:, 1:]
+    print(matrix[1:, 1:])
     return matrix[1:, 1:]
 
 
@@ -91,6 +91,21 @@ def getData(fileName, strNote):
     #return data_result[1:, 1:]
 
 
+def arr1D_2D(data, debug=True):
+    #data is in type of 1D array, but it is actually a 2D data format.  
+    
+    NRow = len(data)
+    NColomn = len(data[1])
+    matrix = np.zeros((NRow, NColomn), dtype='|S20')
+    for i in range(NRow):
+            for j in range(NColomn):
+                matrix[i,j] = data[i][j]
+    if debug:
+        print('Data in 2D array:\n', matrix)
+        
+    return matrix
+    
+    
 def readFloatArray(tableFeatures, NRow, NColomn):
 
     #tableFeatures, LowerIndex, UpperIndex = getData("newDataForm.csv", '&Ped2Exit')
@@ -104,4 +119,27 @@ def readFloatArray(tableFeatures, NRow, NColomn):
 
 
 if __name__ == '__main__':
-    test = readCSV("example2021.csv")
+    #test1 = readCSV("example2021.csv")
+    #print(test1)
+    #test = readCSV_base("example2021.csv")
+    #print(test)
+
+    print('\n Test of Reading Data. \n')
+
+    filename="example2021.csv"
+    
+    dataIS, isStart, isEnd = getData(filename, "&inti")
+    dataCapa, capaStart, capaEnd = getData(filename, "&capa")
+    dataBLD, bldStart, bldEnd = getData(filename, "&bld")
+    dataWP, wpStart, wpEnd = getData(filename, "&prob")
+
+    print(dataIS)
+    print(dataCapa)
+    print(dataBLD)
+    print(dataWP)
+
+    np.shape(dataIS)
+    dataIS_2D=OneDim2TwoDim(dataIS)
+    print(dataIS_2D)
+    np.shape(dataIS_2D)
+
